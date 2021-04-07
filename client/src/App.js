@@ -2,17 +2,20 @@ import React, { useState } from 'react'
 import Axios from 'axios'
 
 export default function App() {
-  const [user, setUser] = useState('')
+  const [userpicture, setUserpicture] = useState('')
+  const [username, setUsername] = useState('')
 
   const getUser = () => {
     Axios.get('https://randomuser.me/api/').then(response => {
-      setUser(response.data.results["0"].name)
+      setUsername(response.data.results["0"].name)
+      setUserpicture(response.data.results["0"].picture.large)
     })
   }
 
   return (
     <div>
-      <p>{user.title} {user.first} {user.last}</p>
+      <img src={userpicture} />
+      <p>{username.title} {username.first} {username.last}</p>
 
       <button onClick={getUser}>Get User</button>
     </div>
