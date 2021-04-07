@@ -6,7 +6,7 @@ export default function App() {
 
   const getUser = () => {
     Axios.get('https://randomuser.me/api/').then(response => {
-      console.log(response.data)
+      console.log(response.data.results["0"].name)
     })
   }
 
